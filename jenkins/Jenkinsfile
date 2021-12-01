@@ -14,12 +14,12 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Checkout SCM') {
-			steps {
-				cleanWs()
-			    checkout scm
-			}
-		}
+        // stage('Checkout SCM') {
+		// 	steps {
+		// 		cleanWs()
+		// 	    checkout scm
+		// 	}
+		// }
         stage('OWASP DependencyCheck') {
 			steps {
 				dependencyCheck additionalArguments: '--format HTML --format XML', odcInstallation: 'Default'
