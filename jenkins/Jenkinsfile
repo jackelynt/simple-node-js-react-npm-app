@@ -20,11 +20,7 @@ pipeline {
 		// 	    checkout scm
 		// 	}
 		// }
-        stage('OWASP DependencyCheck') {
-			steps {
-				dependencyCheck additionalArguments: '--format HTML --format XML', odcInstallation: 'Default'
-			}
-		}
+        
         stage('Test') {
             steps {
                 sh './jenkins/scripts/test.sh'
@@ -37,5 +33,10 @@ pipeline {
                 sh './jenkins/scripts/kill.sh'
             }
         }
+        stage('OWASP DependencyCheck') {
+			steps {
+				dependencyCheck additionalArguments: '--format HTML --format XML', odcInstallation: 'Default'
+			}
+		}
     }
 }
